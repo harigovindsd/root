@@ -47,7 +47,7 @@ function cds() {
 		while ! [[ "$1" =~ "-" ]]; do
 			#echo "|-------------------------------------------------"
 			#echo "|-param-->$1"
-			[ -z $content ] && content=$1 || content=$content" ""$1"
+			[ -z "$content" ] && content=$1 || content=$content" ""$1"
 			#echo "|-content---->$content"
 			shift
 			#echo "|-next--:$1"
@@ -56,7 +56,7 @@ function cds() {
 				break
 			fi
 		done
-		[ ! -z "$content" ] && echo "$content" >> load.properties
+		[ ! -z "$content" ] && echo "$content" >> load.properties 		#filename is hardcoded. Can be updated to be picked from structure definition 
 		#echo "created--- file"
 		shift
 		#echo "next folder $1$2"
@@ -68,6 +68,7 @@ function cds() {
 			cd ..
 			(( depth-- ))
 		done
+		cd -
 		tree .
 	fi
 }
