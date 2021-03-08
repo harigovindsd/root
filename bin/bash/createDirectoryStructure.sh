@@ -62,8 +62,7 @@ function cds() {
 		#echo "next folder $1$2"
 	done
 	
-	if command -v COMMAND &> /dev/null ; then
-		echo "COMMAND could not be found"
+	if command -v tree &> /dev/null ; then
 		while (( 1 != $depth )); do
 			cd ..
 			(( depth-- ))
