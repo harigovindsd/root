@@ -28,38 +28,24 @@ function cds() {
 			cd ..
 			(( depth-- ))
 		done
+		
 		shift
 		mkdir $1
 		cd $1
 		(( depth++ ))
 		shift 2
-		
-		#for i in {1..50}; do 
-		#	if [[ "$1" = "-" ]]; then
-		#		echo "$1"
-		#		shift
-		#		exit 0
-		#	else
-		#		echo "test---->$1"	
-		#		shift
-		#	fi
 		content=""
+		
 		while ! [[ "$1" =~ "-" ]]; do
-			#echo "|-------------------------------------------------"
-			#echo "|-param-->$1"
 			[ -z "$content" ] && content=$1 || content=$content" ""$1"
-			#echo "|-content---->$content"
 			shift
-			#echo "|-next--:$1"
 			if [[ "$1" =~ "-" ]]; 
 			then
 				break
 			fi
 		done
 		[ ! -z "$content" ] && echo "$content" >> load.properties 		#filename is hardcoded. Can be updated to be picked from structure definition 
-		#echo "created--- file"
 		shift
-		#echo "next folder $1$2"
 	done
 	
 	if command -v tree &> /dev/null ; then
