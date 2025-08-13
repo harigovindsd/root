@@ -1,3 +1,3 @@
 # root
 
-Collection of bash/zsh scripts/utilities
+Collection of posh/shell scripts/utilities
